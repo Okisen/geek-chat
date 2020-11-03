@@ -1,0 +1,14 @@
+.wrap{
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-contents{
+  width: 700px;
+  margin: 5vh 5vw;
+}
+
+.sub-contents{
+  width: 300px;
+  margin: 5vh 5vw;
+}
