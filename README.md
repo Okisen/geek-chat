@@ -1,24 +1,71 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# テーブル設計
 
-Things you may want to cover:
+## usersテーブル
 
-* Ruby version
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| nickname           | string |             |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
 
-* System dependencies
 
-* Configuration
+### Association
 
-* Database creation
+- has_many :comments
+- has_many :rooms
 
-* Database initialization
+## rooms テーブル
 
-* How to run the test suite
+| Column      | Type       | Options           |
+| ----------- | ---------- | ----------------- |
+| heading     | string     | null: false       |
+| category_id | integer    | null: false       | 
+| user        | references | foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+### Association
 
-* ...
+- belongs_to :user
+- has_many :comments
+- has_many :tags, through :rooms_tags
+- has_many :rooms_tags
+
+## commentsテーブル
+
+| Column | Type       | Options           |
+| ------ | ---------- | ----------------- |
+| text   | string     | null: false       |
+| good   | integer    | null: false       |
+| user   | references | foreign_key: true |
+| room   | references | foreign_key: true |
+
+
+### Association
+
+- belongs_to :user
+- belongs_to :room
+
+## tagsテーブル
+
+| Column | Type   | Options     |
+| ------ | ------ | ----------- |
+| name   | string | null: false |
+
+### Association
+
+- has_many :rooms, through :rooms_tags
+- has_many :rooms_tags
+
+## rooms_tagsテーブル
+
+| Column | Type       | Options           |
+| ------ | ---------- | ----------------- |
+| room   | references | foreign_key: true |
+| tag    | references | foreign_key: true |
+
+### Association
+
+- belongs_to :room
+- belongs_to :tag
