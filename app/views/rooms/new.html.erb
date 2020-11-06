@@ -1,0 +1,13 @@
+<%=render "shared/header"%>
+
+<%=form_with model: @room, class:'create-room-form', url: rooms_path, local:true do |f|%>
+  <div class="input-heading">
+    <%= f.text_area :heading%>
+  </div>
+  <div>
+    <%=f.collection_select(:category_id,Category.all,:id,:name,{},{class:"category-select"})%>
+  </div>
+  <div class="create-room-btn">
+    <%=f.submit "新規ルーム作成"%>
+  </div>
+<%end%>

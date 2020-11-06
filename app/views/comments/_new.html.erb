@@ -1,0 +1,6 @@
+<%=form_with model: @comment, url: room_comments_path, local: true do |f|%>
+  <%=f.text_area :text%>
+
+  <%=f.submit '送信'%>
+
+<%end%>

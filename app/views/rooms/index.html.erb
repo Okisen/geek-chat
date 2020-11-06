@@ -1,25 +1,12 @@
 <%=render "shared/header"%>
+
 <div class="wrap">
   <div class="main-contents">
     <div class="recent-rooms">
-      <h1>room's heading1</h1>
-      <p>部屋の1コメここに内容が入るここに内容が入るここに内容が入るここに内容が入るここに内容が入るここに内容が入るここに内容が入るここに内容が入る</p>
-      <div class="category">カテゴリー</div>
-      <ul class="tags">
-        <li>漫画</li>
-        <li>考察</li>
-        <li>ジョジョ</li>
-      </ul>
+      <%=render partial:"room", collection: @rooms%>
     </div>
-    <div class="recent-rooms">
-      <h1>room's heading2</h1>
-      <p>部屋の1コメここに内容が入るここに内容が入るここに内容が入るここに内容が入るここに内容が入るここに内容が入るここに内容が入るここに内容が入る</p>
-      <div class="category">カテゴリー</div>
-      <ul class="tags">
-        <li>漫画</li>
-        <li>考察</li>
-        <li>ジョジョ</li>
-      </ul>
+    <div class="create-new-room">
+      <%=link_to '新規ルーム作成',new_room_path %>
     </div>
   </div>
   <div class="sub-contents">
