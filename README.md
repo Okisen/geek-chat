@@ -34,12 +34,13 @@
 
 ## commentsテーブル
 
-| Column | Type       | Options           |
-| ------ | ---------- | ----------------- |
-| text   | string     | null: false       |
-| good   | integer    | null: false       |
-| user   | references | foreign_key: true |
-| room   | references | foreign_key: true |
+| Column     | Type       | Options           |
+| ---------- | ---------- | ----------------- |
+| text       | string     | null: false       |
+| related_id | integer    | null: false       |
+| good       | integer    | null: false       |
+| user       | references | foreign_key: true |
+| room       | references | foreign_key: true |
 
 
 ### Association

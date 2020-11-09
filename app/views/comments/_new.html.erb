@@ -1,6 +1,14 @@
-<%=form_with model: @comment, url: room_comments_path, local: true do |f|%>
-  <%=f.text_area :text%>
-
-  <%=f.submit '送信'%>
-
-<%end%>
+<div class="new-comment-form">
+  <p>新規コメント投稿フォーム</p>
+  <%=form_with model: @new_comment, url: room_comments_path, local: true do |f|%>
+    <div class:nickname>
+    <%=f.text_field :nickname, placeholder: "名無しさん"%>
+    </div>
+    <div class:text>
+    <%=f.text_area :text, placeholder:"コメントを入力してください"%>
+    </div>
+    <div class:submit-btn>
+    <%=f.submit '送信'%>
+    </div>
+  <%end%>
+</div>

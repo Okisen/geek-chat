@@ -2,5 +2,9 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :room
 
-  validates :text, presence: true
+  with_options presence: true do
+    validates :text
+    validates :related_id
+    validates :good
+  end
 end
