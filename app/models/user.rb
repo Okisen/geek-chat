@@ -6,4 +6,9 @@ class User < ApplicationRecord
   
   has_many :rooms
   has_many :comments
+  has_many :likes
+
+  def already_liked?(comment)
+    self.likes.exists?(comment_id: comment.id)
+  end
 end

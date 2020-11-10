@@ -1,0 +1,4 @@
+<div class="good">
+  <%=link_to "♡", room_comment_likes_path(comment_id:comment.id), method: :post, class:"good-btn"%>
+  <%=comment.likes.all.count%>
+</div>

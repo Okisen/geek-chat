@@ -13,12 +13,12 @@
   <div class="comment-text">
     <%=comment.text%>
   </div>
-  <div class="good">
-    <%=link_to "♡", "#", class:"good-btn"%>
-    <%if !comment.good%>
-      <%="0"%>
+  <div class="like">
+    <%if current_user.already_liked?(comment)%>
+      <%=link_to "♡", room_comment_like_path(comment_id:comment.id, id: current_user.likes.find_by(comment_id:comment.id).id), method: :delete, class:"like-destroy-btn"%>
     <%else%>
-      <%=comment.good%>
+      <%=link_to "♡", room_comment_likes_path(comment_id:comment.id), method: :post, class:"like-create-btn"%>
     <%end%>
+    <%=comment.likes.all.count%>
   </div>
 </div>

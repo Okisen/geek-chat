@@ -10,18 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_053907) do
+ActiveRecord::Schema.define(version: 2020_11_10_074556) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "text", null: false
     t.integer "related_id", null: false
-    t.integer "good", null: false
     t.bigint "user_id"
     t.bigint "room_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["room_id"], name: "index_comments_on_room_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "comment_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_likes_on_comment_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -48,5 +56,7 @@ ActiveRecord::Schema.define(version: 2020_11_04_053907) do
 
   add_foreign_key "comments", "rooms"
   add_foreign_key "comments", "users"
+  add_foreign_key "likes", "comments"
+  add_foreign_key "likes", "users"
   add_foreign_key "rooms", "users"
 end

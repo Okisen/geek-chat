@@ -5,3 +5,12 @@
   margin: 5px;
 }
 
+.like-create-btn{
+  color: black;
+  text-decoration: none;
+}
+
+.like-destroy-btn{
+  color: red;
+  text-decoration: none;
+}
