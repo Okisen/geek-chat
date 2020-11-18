@@ -15,6 +15,7 @@
 
 - has_many :comments
 - has_many :rooms
+- has_many :likes
 
 ## rooms テーブル
 
@@ -29,8 +30,8 @@
 
 - belongs_to :user
 - has_many :comments
-- has_many :tags, through :rooms_tags
-- has_many :rooms_tags
+- has_many :tags, through :room_tag_relations
+- has_many :room_tag_relations
 
 ## commentsテーブル
 
@@ -38,7 +39,6 @@
 | ---------- | ---------- | ----------------- |
 | text       | string     | null: false       |
 | related_id | integer    | null: false       |
-| good       | integer    | null: false       |
 | user       | references | foreign_key: true |
 | room       | references | foreign_key: true |
 
@@ -47,19 +47,33 @@
 
 - belongs_to :user
 - belongs_to :room
+- has_many :likes
 
-## tagsテーブル
+## likesテーブル
 
-| Column | Type   | Options     |
-| ------ | ------ | ----------- |
-| name   | string | null: false |
+| Column     | Type       | Options           |
+| ---------- | ---------- | ----------------- |
+| user       | references | foreign_key: true |
+| comment    | references | foreign_key: true |
+
 
 ### Association
 
-- has_many :rooms, through :rooms_tags
-- has_many :rooms_tags
+- belongs_to :user
+- belongs_to :comment
 
-## rooms_tagsテーブル
+## tagsテーブル
+
+| Column | Type   | Options          |
+| ------ | ------ | ---------------- |
+| name   | string | uniqueness: true |
+
+### Association
+
+- has_many :rooms, through :room_tag_relations
+- has_many :room_tag_relations
+
+## room_tag_relationsテーブル
 
 | Column | Type       | Options           |
 | ------ | ---------- | ----------------- |

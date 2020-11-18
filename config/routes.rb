@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "rooms#index"
 
   resources :rooms, only: [:index, :new, :create, :show] do
+    resources :tags, only: [:create, :destroy]
     resources :comments, only: [:index, :create] do
       resources :likes, only: [:create, :destroy]
     end
