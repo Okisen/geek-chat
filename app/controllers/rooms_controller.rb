@@ -4,12 +4,13 @@ class RoomsController < ApplicationController
   end
 
   def new
-    @room = Room.new
+    @room = RoomsTag.new
   end
 
   def create
-    @room = Room.create(room_params)
-    if @room.save
+    @room = RoomsTag.new(room_tag_params)
+    if @room.valid?
+      @room.save
       redirect_to action: :index
     else
       render action: :new
@@ -17,11 +18,16 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @room = Room.find(params[:id])
+    set_room
+    @comments = Comment.where(room_id:params[:id])
+    @new_comment = Comment.new
   end
   
   private
-  def room_params
-    params.require(:room).permit(:heading,:category_id).merge(user_id: current_user.id)
+  def room_tag_params
+    params.require(:rooms_tag).permit(:heading,:category_id,:name).merge(user_id: current_user.id)
+  end
+  def set_room
+    @room = Room.find(params[:id])
   end
 end

@@ -7,6 +7,10 @@
   <div>
     <%=f.collection_select(:category_id,Category.all,:id,:name,{},{class:"category-select"})%>
   </div>
+  <div class="tag-field", id='tag-field'>
+    <%= f.label :name, "タグ" %>
+    <%= f.text_field :name, class:"input-tag" %>
+  </div>
   <div class="create-room-btn">
     <%=f.submit "新規ルーム作成"%>
   </div>

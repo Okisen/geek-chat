@@ -1,6 +1,6 @@
 <div class="new-comment-form">
   <p>新規コメント投稿フォーム</p>
-  <%=form_with model: @new_comment, url: room_comments_path, local: true do |f|%>
+  <%=form_with model: @new_comment, url: room_comments_path(@room.id), local: true do |f|%>
     <div class:nickname>
     <%=f.text_field :nickname, placeholder: "名無しさん"%>
     </div>

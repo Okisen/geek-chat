@@ -1,12 +1,8 @@
 class CommentsController < ApplicationController
-  def index
-    @comments = Comment.where(room_id:params[:room_id])
-    @new_comment = Comment.new
-  end
 
   def create
     @comment = Comment.create(comment_params)
-    redirect_to action: :index
+    redirect_to room_path(params[:room_id])
   end
 
   private

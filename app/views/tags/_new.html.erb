@@ -1,0 +1,12 @@
+<div class="new-tag-form">
+  <p>タグ作成</p>
+
+  <%=form_with model: @tag, url: room_tags_path(@room.id), local: true do |f|%>
+    <div class:name>
+    <%=f.text_field :name, placeholder: "名無しさん"%>
+    </div>
+    <div class:submit-btn>
+    <%=f.submit '送信'%>
+    </div>
+  <%end%>
+</div>
