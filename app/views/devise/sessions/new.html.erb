@@ -4,10 +4,12 @@
 <%= form_with class:"sign-in-form", model: @user, url:user_session_path, local:true do |f| %>
 <%=render "devise/shared/error_messages"%>
   <div class="field">
+    <span>email</span>
     <%= f.email_field :email %>
   </div>
 
   <div class="field">
+  <span>password</span>
     <%= f.password_field :password %>
   </div>
 

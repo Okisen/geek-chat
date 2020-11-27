@@ -3,12 +3,12 @@
 # アプリケーション名
 　geek-chat31780
 # アプリケーション概要
-  特定の話題にてついてルームを作成し、そのルーム内で匿名のコメントを残すことができます。
+  特定の話題についてルームを作成し、そのルーム内で匿名のコメントを残すことができます。
 # URL
   https://geek-chat31780.herokuapp.com/
 # テスト用アカウント
-  email:sample@sample
-  password:sample1
+- email:sample@sample
+- password:sample1
 # 利用方法
   ユーザー登録後、ルーム作成とコメント機能が使えるようになります。
   ユーザー未登録の場合、コメント閲覧のみ行えます。

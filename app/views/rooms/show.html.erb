@@ -1,4 +1,12 @@
 <%=render "shared/header"%>
+<div room_heading>
+  <span>ルーム名:</span>
+  <%=@room.heading%>
+</div>
+<div room_heading>
+  <span>カテゴリー:</span>
+  <%=@room.category.name%>
+</div>
 <%=render "tags/index"%>
 <%=render "tags/new"%>
 <%=render partial:"comments/comment", collection: @comments%>
